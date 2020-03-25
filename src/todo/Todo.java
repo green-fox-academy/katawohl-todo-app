@@ -8,7 +8,7 @@ public class Todo {
     try {
       argumentHandler.argHandler();
     } catch (IOException e) {
-      System.out.println("ToDo text file list does not exist.");;
+      System.out.println("ToDo text file list does not exist.");
     }
   }
 }
