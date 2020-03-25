@@ -15,19 +15,13 @@ public class ArgumentHandler {
   }
 
   PrintUsage printUsage = new PrintUsage();
+  ListTask listTask = new ListTask("assets/todo-list.txt");
 
   public void argHandler() throws IOException {
     if (args.length == 0) {
       printUsage.printUsage();
-    }
-    else if (args[0].equals("-l")) {
-      int counter = 1;
-      Path filePath = Paths.get("assets/todo-list.txt");
-      List<String> lines = Files.readAllLines(filePath);
-      for (String line: lines) {
-        System.out.println(counter + " - " + line);
-        counter++;
-      }
+    } else if (args[0].equals("-l")){
+      listTask.listTask();
     }
   }
 

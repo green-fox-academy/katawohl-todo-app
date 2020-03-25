@@ -7,12 +7,15 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class ListTask {
+  String path;
 
+public ListTask(String path){
+  this.path = path;
+}
   public void listTask() throws IOException {
     int counter = 1;
-    Path filePath = Paths.get("assets/todo-list.txt");
-    List<String> lines = Files.readAllLines(filePath);
-    for (String line: lines) {
+    List<String> lines = Files.readAllLines(Paths.get(this.path));
+    for (String line : lines) {
       System.out.println(counter + " - " + line);
       counter++;
     }
