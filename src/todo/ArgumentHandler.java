@@ -20,6 +20,7 @@ public class ArgumentHandler {
   PrintUsage printUsage = new PrintUsage();
   ListTask listTask = new ListTask(path);
   AddNewLine addNewLine = new AddNewLine(path);
+  RemoveLine removeLine = new RemoveLine(path);
 
   public void argHandler() throws IOException {
     if (args.length == 0) {
@@ -27,8 +28,13 @@ public class ArgumentHandler {
     } else if (args[0].equals("-l")) {
       listTask.listTask();
     } else if (args[0].equals("-a")) {
-      addNewLine.addingNewLine("Drink gin and tonic");
-      listTask.listTask();
+      addNewLine.addingNewLine("");
+    } else if (args[0].equals("-r")) {
+      if (args.length == 1) {
+        System.out.println("Invalid argument. Remove must specify the number of  line to remove");
+      } else if (args.length > 1) {
+        removeLine.removeLine(args);
+      }
     }
   }
 
