@@ -34,11 +34,22 @@ public class Lister {
     if (lines.isEmpty()) {
       System.out.println("No todos for today! :)");
     } else {
+      for (int i = 0; i < lines.size(); i++) {
+        if (!lines.get(i).contains("[x]")) {
+          String uncheckedLine = "[ ] " + lines.get(i);
+          lines.set(i, uncheckedLine);
+        }
+        if (lines.get(i).contains("[x]")) {
+          continue;
+        }
+        Files.write(Paths.get(path), lines);
+      }
       int counter = 1;
       for (String line : lines) {
-        System.out.println(counter + " - " + line);
+        System.out.println(counter + " -  " + line);
         counter++;
       }
+
     }
   }
 }
