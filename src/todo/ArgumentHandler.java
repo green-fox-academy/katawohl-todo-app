@@ -1,6 +1,9 @@
 package todo;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ArgumentHandler {
 
@@ -16,6 +19,7 @@ public class ArgumentHandler {
   Lister lister = new Lister(path);
   NewLineAdder lineAdder = new NewLineAdder(path);
   LineRemover lineRemover = new LineRemover(path);
+  LineChecker lineChecker = new todo.LineChecker(path);
 
   public void argHandler() throws IOException {
     if (args.length == 0) {
@@ -33,9 +37,8 @@ public class ArgumentHandler {
     } else if (args[0].equals("-c")) {
       if (args.length == 1) {
         System.out.println("Invalid argument. Must specify the number of line to check");
-      }
-      else if (args.length > 1){
-
+      } else if (args.length > 1) {
+        lineChecker.checkLine(args);
       }
     }
   }
