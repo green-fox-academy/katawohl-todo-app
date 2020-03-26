@@ -1,11 +1,6 @@
 package todo;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ArgumentHandler {
 
@@ -17,23 +12,23 @@ public class ArgumentHandler {
 
   String path = "assets/todo-list.txt";
 
-  PrintUsage printUsage = new PrintUsage();
-  ListTask listTask = new ListTask(path);
-  AddNewLine addNewLine = new AddNewLine(path);
-  RemoveLine removeLine = new RemoveLine(path);
+  Printer printer = new Printer();
+  Lister lister = new Lister(path);
+  NewLineAdder lineAdder = new NewLineAdder(path);
+  LineRemover lineRemover = new LineRemover(path);
 
   public void argHandler() throws IOException {
     if (args.length == 0) {
-      printUsage.printUsage();
+      printer.printUsage();
     } else if (args[0].equals("-l")) {
-      listTask.listTask();
+      lister.listTask();
     } else if (args[0].equals("-a")) {
-      addNewLine.addingNewLine("");
+      lineAdder.addingNewLine("");
     } else if (args[0].equals("-r")) {
       if (args.length == 1) {
         System.out.println("Invalid argument. Remove must specify the number of  line to remove");
       } else if (args.length > 1) {
-        removeLine.removeLine(args);
+        lineRemover.removeLine(args);
       }
     }
   }

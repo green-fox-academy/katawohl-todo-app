@@ -6,14 +6,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemoveLine {
+public class LineRemover {
   private String path;
 
-  public RemoveLine(String path) {
+  public LineRemover(String path) {
     this.path = path;
   }
 
-  ListTask listTask = new ListTask();
+  Lister lister = new Lister();
 
   public void removeLine(String[] args) throws IOException {
     int lineToRemove = Integer.parseInt(args[1]) - 1;
@@ -26,7 +26,7 @@ public class RemoveLine {
       linesRemoved.add(allLines.get(i));
     }
     Files.write(Paths.get(path), linesRemoved);
-    listTask.listTask(path);
+    lister.listTask(path);
 
   }
 }

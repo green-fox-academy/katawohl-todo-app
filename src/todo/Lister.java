@@ -5,14 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ListTask {
+public class Lister {
   private String path;
 
-  public ListTask() {
+  public Lister() {
     this.path = null;
   }
 
-  public ListTask(String path) {
+  public Lister(String path) {
     this.path = path;
   }
 

@@ -1,7 +1,7 @@
 package todo;
 
-public class PrintUsage {
-  public PrintUsage(){
+public class Printer {
+  public Printer(){
 
   }
 

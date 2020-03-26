@@ -2,19 +2,17 @@ package todo;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import javax.swing.JOptionPane;
 
-public class AddNewLine {
+public class NewLineAdder {
   private String path;
 
-  public AddNewLine(String path) {
+  public NewLineAdder(String path) {
     this.path = path;
   }
 
-  ListTask listTask = new ListTask();
+  Lister lister = new Lister();
 
   public void addingNewLine(String newline) throws IOException {
     if (newline.isEmpty()){
@@ -24,7 +22,7 @@ public class AddNewLine {
       List<String> lines = Files.readAllLines(Paths.get(path));
       lines.add(newline);
       Files.write(Paths.get(path), lines);
-      listTask.listTask(path);
+      lister.listTask(path);
     }
   }
 }
